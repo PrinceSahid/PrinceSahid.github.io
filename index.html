@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<!--
+  GitHub Pages portfolio template.
+
+  How to use:
+  1. Rename this file to index.html if it isn't already.
+  2. Push it to a repo named yourusername.github.io (or any repo, then enable
+     Pages in Settings > Pages > Deploy from branch).
+  3. Search for "EDIT:" comments below and fill in your details.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sahid Kabba — Cybersecurity Portfolio</title>
+<meta name="description" content="Portfolio of Sahid Kabba, a cybersecurity student focused on cloud security engineering.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0E1420;
+    --panel: #161C2B;
+    --panel-border: #262E42;
+    --text: #EDF0F5;
+    --text-dim: #8792A6;
+    --accent: #F2A93B;
+    --accent-dim: #7A5A25;
+    --line: #232B3D;
+    --radius: 3px;
+    --content-width: 760px;
+    --wide-width: 980px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0;
+    color: var(--text);
+  }
+
+  .mono {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  a:hover { text-decoration: underline; }
+
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  /* ---------- nav ---------- */
+
+  header.site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(14, 20, 32, 0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-inner {
+    max-width: var(--wide-width);
+    margin: 0 auto;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links a {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+  }
+  .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--panel-border);
+    color: var(--text);
+    border-radius: var(--radius);
+    padding: 6px 10px;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+
+  /* ---------- hero ---------- */
+
+  .hero {
+    max-width: var(--wide-width);
+    margin: 0 auto;
+    padding: 88px 24px 64px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    line-height: 1.1;
+    max-width: 14ch;
+  }
+
+  .hero .role {
+    margin-top: 18px;
+    font-size: 1.15rem;
+    color: var(--text-dim);
+    max-width: 46ch;
+  }
+
+  .status-strip {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    max-width: 640px;
+  }
+
+  .status-cell {
+    padding: 18px 20px;
+    border-right: 1px solid var(--panel-border);
+    background: var(--panel);
+  }
+  .status-cell:last-child { border-right: none; }
+
+  .status-cell .value {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1.5rem;
+    color: var(--accent);
+  }
+
+  .status-cell .label {
+    margin-top: 4px;
+    font-size: 0.82rem;
+    color: var(--text-dim);
+  }
+
+  /* ---------- sections ---------- */
+
+  section {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 64px 24px;
+    border-top: 1px solid var(--line);
+  }
+
+  section h2 {
+    font-size: 1.6rem;
+  }
+
+  section > p.intro {
+    margin-top: 14px;
+    color: var(--text-dim);
+    max-width: 62ch;
+  }
+
+  /* ---------- certifications ---------- */
+
+  .cert-list {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cert-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .cert-row:first-child { border-top: 1px solid var(--line); }
+
+  .cert-name {
+    font-weight: 500;
+  }
+
+  .cert-issuer {
+    display: block;
+    margin-top: 2px;
+    font-size: 0.88rem;
+    color: var(--text-dim);
+  }
+
+  .cert-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+
+  /* ---------- education timeline ---------- */
+
+  .timeline {
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 16px;
+    padding-bottom: 32px;
+    position: relative;
+  }
+
+  .timeline-item:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 30px;
+    bottom: -2px;
+    width: 1px;
+    background: var(--panel-border);
+  }
+
+  .timeline-marker {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--accent-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--accent);
+    background: var(--bg);
+    flex-shrink: 0;
+  }
+
+  .timeline-content h3 {
+    font-size: 1.05rem;
+    font-weight: 500;
+  }
+
+  .timeline-content .meta {
+    margin-top: 2px;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .timeline-content p {
+    margin: 8px 0 0;
+    color: var(--text-dim);
+    font-size: 0.95rem;
+  }
+
+  /* ---------- skills ---------- */
+
+  .skill-groups {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 40px;
+  }
+
+  .skill-group h3 {
+    font-size: 0.95rem;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .skill-group ul {
+    margin: 10px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .skill-group li {
+    padding: 6px 0;
+    color: var(--text-dim);
+    border-bottom: 1px solid var(--line);
+    font-size: 0.95rem;
+  }
+  .skill-group li:last-child { border-bottom: none; }
+
+  /* ---------- projects ---------- */
+
+  .project-list {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .project-item {
+    padding: 22px;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius);
+  }
+
+  .project-item h3 {
+    font-size: 1.1rem;
+  }
+
+  .project-item .stack {
+    margin-top: 6px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--accent);
+  }
+
+  .project-item p {
+    margin: 10px 0 0;
+    color: var(--text-dim);
+  }
+
+  .project-item .links {
+    margin-top: 14px;
+    display: flex;
+    gap: 18px;
+    font-size: 0.9rem;
+  }
+
+  .exp-bullets {
+    margin: 14px 0 0;
+    padding-left: 18px;
+    color: var(--text-dim);
+    font-size: 0.92rem;
+  }
+  .exp-bullets li { margin-bottom: 8px; }
+  .exp-bullets li:last-child { margin-bottom: 0; }
+
+  /* ---------- contact ---------- */
+
+  .contact-list {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .contact-row {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .contact-row .label {
+    width: 90px;
+    flex-shrink: 0;
+    color: var(--text-dim);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+  }
+
+  footer {
+    max-width: var(--wide-width);
+    margin: 0 auto;
+    padding: 32px 24px 60px;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+  }
+
+  /* ---------- responsive ---------- */
+
+  @media (max-width: 720px) {
+    .nav-links { display: none; }
+    .nav-links.open {
+      display: flex;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+      padding: 16px 24px;
+      gap: 16px;
+    }
+    .nav-toggle { display: block; }
+    .status-strip { grid-template-columns: 1fr; max-width: none; }
+    .status-cell { border-right: none; border-bottom: 1px solid var(--panel-border); }
+    .status-cell:last-child { border-bottom: none; }
+    .skill-groups { grid-template-columns: 1fr; }
+    .cert-row { flex-direction: column; align-items: flex-start; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <div class="nav-name mono">Sahid Kabba</div>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero" style="border-top: none;">
+    <h1>Sahid Kabba</h1>
+    <p class="role">Cybersecurity student focused on cloud security engineering, with hands on experience in IT support, digital forensics, and network design.</p>
+
+    <div class="status-strip">
+      <div class="status-cell">
+        <div class="value">4</div>
+        <div class="label">certifications</div>
+      </div>
+      <div class="status-cell">
+        <div class="value">08/27</div>
+        <div class="label">expected graduation</div>
+      </div>
+      <div class="status-cell">
+        <div class="value">GMU</div>
+        <div class="label">B.A.S. cybersecurity</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About</h2>
+    <p class="intro">
+      I study cybersecurity at George Mason University, working toward a B.A.S. after
+      completing my A.A.S. at Northern Virginia Community College with a 3.0 GPA. My
+      focus is cloud security and data center operations, and I am building toward a
+      role in cloud security engineering. I hold four industry certifications and I am
+      on track to graduate in August 2027, after which I plan to continue into a
+      master's program.
+    </p>
+  </section>
+
+  <section id="certifications">
+    <h2>Certifications</h2>
+    <div class="cert-list">
+      <div class="cert-row">
+        <div>
+          <span class="cert-name">CompTIA Security+</span>
+          <span class="cert-issuer">CompTIA</span>
+        </div>
+        <span class="cert-date mono"><!-- EDIT: add date/ID -->issued: —</span>
+      </div>
+      <div class="cert-row">
+        <div>
+          <span class="cert-name">CompTIA CySA+</span>
+          <span class="cert-issuer">CompTIA</span>
+        </div>
+        <span class="cert-date mono"><!-- EDIT: add date/ID -->issued: —</span>
+      </div>
+      <div class="cert-row">
+        <div>
+          <span class="cert-name">CompTIA CASP+</span>
+          <span class="cert-issuer">CompTIA</span>
+        </div>
+        <span class="cert-date mono"><!-- EDIT: add date/ID -->issued: —</span>
+      </div>
+      <div class="cert-row">
+        <div>
+          <span class="cert-name">Google IT Support Professional Certificate</span>
+          <span class="cert-issuer">Google</span>
+        </div>
+        <span class="cert-date mono"><!-- EDIT: add date/ID -->issued: —</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-marker">1</div>
+        <div class="timeline-content">
+          <h3>A.A.S. in Cybersecurity</h3>
+          <div class="meta">Northern Virginia Community College, completed December 2025, GPA 3.0</div>
+          <p>Coursework covering network security, systems administration, and security fundamentals.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-marker">2</div>
+        <div class="timeline-content">
+          <h3>B.A.S. in Cybersecurity</h3>
+          <div class="meta">George Mason University, expected August 2027</div>
+          <p>Coursework in network design, digital forensics, and security operations, with a focus on cloud security and data center infrastructure.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="project-list">
+      <div class="project-item">
+        <h3>IT Support Technician</h3>
+        <div class="stack">Infinera &nbsp;/&nbsp; January 2024 to February 2025</div>
+        <ul class="exp-bullets">
+          <li>Resolved support tickets against service level agreements, troubleshooting desktop computers, peripherals, and end user systems</li>
+          <li>Installed, configured, and troubleshot VTC systems and multi profile workstation setups, including MS Exchange and Outlook</li>
+          <li>Configured and deployed new equipment, including imaging systems and drive initialization</li>
+          <li>Performed hardware and software updates to comply with security and configuration management policies</li>
+          <li>Compiled weekly and monthly operational reports to support project oversight</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skill-groups">
+      <div class="skill-group">
+        <h3>Languages and tools</h3>
+        <ul>
+          <li>Python</li>
+          <li>Wireshark</li>
+          <li>Kali Linux</li>
+          <li>Burp Suite</li>
+          <li>Autopsy</li>
+          <li>Remedy</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Networking</h3>
+        <ul>
+          <li>LAN / WAN</li>
+          <li>TCP/IP</li>
+          <li>DNS troubleshooting</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Operating systems</h3>
+        <ul>
+          <li>Windows</li>
+          <li>macOS</li>
+          <li>Linux</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Applications</h3>
+        <ul>
+          <li>MS Office Suite</li>
+          <li>Google Suite</li>
+          <li>Zoom</li>
+          <li>iCloud</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project-list">
+      <div class="project-item">
+        <h3>DC Gallery Attack</h3>
+        <div class="stack">digital forensics / Autopsy &nbsp;&nbsp;November to December 2025</div>
+        <p>Ran forensic analysis on multiple drives and mobile devices, recovering and carving lost images and emails. Connected evidence across the case and compiled a report on findings and timeline, working alongside classmates to cross check results.</p>
+        <div class="links">
+          <!-- EDIT: add a real link or remove this row -->
+          <a href="#">Write-up</a>
+        </div>
+      </div>
+      <div class="project-item">
+        <h3>Network Design & Plan</h3>
+        <div class="stack">firewalls / VPN / DMZ &nbsp;&nbsp;June to July 2021</div>
+        <p>Developed a network plan for a company, selecting firewalls and their placements, recommending VPNs and supporting tools, and adding a DMZ implementation plan with its advantages. Defined a metric of success for network availability.</p>
+        <div class="links">
+          <!-- EDIT: add a real link or remove this row -->
+          <a href="#">Write-up</a>
+        </div>
+      </div>
+      <!-- EDIT: duplicate a .project-item block above to add more projects -->
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-list">
+      <div class="contact-row">
+        <span class="label">email</span>
+        <a href="mailto:Sahidkabba@gmail.com">Sahidkabba@gmail.com</a>
+      </div>
+      <div class="contact-row">
+        <span class="label">phone</span>
+        <span>(703) 595 9868</span>
+      </div>
+      <div class="contact-row">
+        <span class="label">location</span>
+        <span>Woodbridge, VA</span>
+      </div>
+      <div class="contact-row">
+        <span class="label">linkedin</span>
+        <!-- EDIT: add your LinkedIn URL -->
+        <a href="https://linkedin.com/in/yourprofile">linkedin.com/in/yourprofile</a>
+      </div>
+      <div class="contact-row">
+        <span class="label">github</span>
+        <!-- EDIT: add your GitHub URL -->
+        <a href="https://github.com/yourusername">github.com/yourusername</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span class="mono">Built with GitHub Pages.</span>
+</footer>
+
+<script>
+  var navToggle = document.getElementById('navToggle');
+  var navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', function () {
+    var isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  navLinks.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+
+</body>
+</html>
